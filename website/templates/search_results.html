@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load compress %}
+
+{% block content %}
+<section class="breadcrumbs-area ptb-110 bg-opacity bg-relative" style="background: url('{% static "images/breadcrumbs-image.jpg" %}' )">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="breadcrumbs">
+                    <h2 class="page-title">{% trans 'Search' %}</h2>
+                    <ul>
+                        <li>
+                            <a class="active" href="#">{% trans 'Home' %}</a>
+                        </li>
+                        <li>
+                            {% trans 'Search' %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="courses-details ptb-50">
+    <div class="container">
+        <div class="row">
+        <div class="col-xs-12">
+        <style type="text/css">table {border-collapse: collapse;width: 100%;}
+                                   td, th {border: 1px solid #dddddd;text-align: center;padding: 8px;}
+                                   tr:nth-child(even) {background-color: #dddddd;}</style>
+            <div class="courses-information gray-bg">
+                <h3 class="sidebar-title text-center">Search Results </h3>
+                <table id="myTable" class="display" cellspacing="0" width="100%" style="padding-bottom: 40px;">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for person in people_search %}
+                        <tr>
+                            <td class="linking"><a href="{% for page in pages %}{% if page.title_en == person.faculty_en %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{{person.name}}</a></td>
+                            <td>{% if LANGUAGE_CODE == "en" %}{{person.faculty_en}}{% else %}{{person.faculty_el}}{% endif %}</td>
+                        </tr>
+                        {% endfor %}
+                        {% for content in content_search %}
+                        <tr>
+                            <td class="linking"><a href="{% for page in pages %}{% if page.title == content.sub_category %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl content.id %}{% endif %}{% endfor %}">{{content.title}}</a></td>
+                            <td>{{content.content}}</td>
+                        </tr>  
+                        {% endfor %}
+                    </tbody>
+                </table></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block extra_js %}
+{% compress js/css %}
+<script>
+  $(function(){
+    $("#myTable").dataTable();
+    // $("#myTable_paginate").hide();
+    // $("#myTable_info").hide();
+    // $("#myTable_length").hide();
+    $("#myTable_filter").css("text-align", "center");
+    $("#myTable_filter").css("float", "none");
+    $("#myTable_filter").css("margin-top", "10px");
+    $("#myTable_paginate").css("margin-top", "10px");
+  })
+</script>
+{% endcompress %}
+{% endblock %}

@@ -1,0 +1,531 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-01 11:59+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\myproject\settings.py:145
+msgid "English"
+msgstr ""
+
+#: .\myproject\settings.py:146
+msgid "Greek"
+msgstr ""
+
+#: .\website\forms.py:12
+msgid "Name*"
+msgstr "Όνομα"
+
+#: .\website\forms.py:18
+msgid "Email*"
+msgstr "Email:"
+
+#: .\website\forms.py:24
+msgid "Message*"
+msgstr "Μήνυμα"
+
+#: .\website\templates\footer.html:45
+msgid "Quick Links"
+msgstr "Σύνδεσμοι"
+
+#: .\website\templates\footer.html:47 .\website\templates\regular_page.html:16
+#: .\website\templates\search_results.html:15
+msgid "Home"
+msgstr "Αρχική"
+
+#: .\website\templates\footer.html:48 .\website\templates\index.html:127
+msgid "Recent Projects"
+msgstr "Πρόσφατα Πρότζεκτς"
+
+#: .\website\templates\footer.html:49 .\website\templates\index.html:156
+msgid "Recent Publications"
+msgstr "Πρόσφατες Δημοσιεύσεις"
+
+#: .\website\templates\footer.html:50
+msgid "Upcoming Events"
+msgstr "Επερχόμενες Εκδηλώσεις"
+
+#: .\website\templates\footer.html:56
+msgid "Social"
+msgstr "Κοινωνικά"
+
+#: .\website\templates\footer.html:67
+msgid "Contact Us"
+msgstr "Επικοινωνία"
+
+#: .\website\templates\footer.html:70
+msgid "send"
+msgstr "αποστολή"
+
+#: .\website\templates\footer.html:76
+msgid "Awards"
+msgstr "Βραβεία"
+
+#: .\website\templates\header.html:37 .\website\templates\header.html:38
+#: .\website\templates\index.html:222 .\website\templates\regular_page.html:227
+#: .\website\templates\search_results.html:12
+#: .\website\templates\search_results.html:18
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: .\website\templates\header.html:86
+msgid "HOME"
+msgstr "ΑΡΧΙΚΗ"
+
+#: .\website\templates\header.html:87
+msgid "ABOUT"
+msgstr "ΠΛΗΡΟΦΟΡΙΕΣ"
+
+#: .\website\templates\header.html:88
+msgid "PEOPLE"
+msgstr "ΠΡΟΣΩΠΙΚΟ"
+
+#: .\website\templates\header.html:90
+msgid "Head Of Translog"
+msgstr "Υπεύθυνος Εργαστηρίου"
+
+#: .\website\templates\header.html:91
+msgid "Senior Research Fellows"
+msgstr "Πρεσβύτεροι Ερευνητές"
+
+#: .\website\templates\header.html:92
+msgid "Research Fellows"
+msgstr "Έρευνητές"
+
+#: .\website\templates\header.html:93
+msgid "Visiting Research Fellows"
+msgstr "Επισκέπτες Ερευνητές"
+
+#: .\website\templates\header.html:94
+msgid "Phd Students"
+msgstr "Μεταπτυχιακοί Φοιτητές"
+
+#: .\website\templates\header.html:97
+msgid "RESEARCH"
+msgstr "ΕΡΕΥΝΑ"
+
+#: .\website\templates\header.html:99
+msgid "Areas"
+msgstr "Περιοχές"
+
+#: .\website\templates\header.html:100 .\website\templates\index.html:172
+#: .\website\templates\regular_page.html:183
+#: .\website\templates\regular_page.html:277
+msgid "Projects"
+msgstr "Πρότζεκτς"
+
+#: .\website\templates\header.html:103
+msgid "PUBLICATIONS"
+msgstr "ΔΗΜΟΣΙΕΥΣΕΙΣ"
+
+#: .\website\templates\header.html:105 .\website\templates\index.html:181
+#: .\website\templates\regular_page.html:190
+#: .\website\templates\regular_page.html:423
+#: .\website\templates\regular_page.html:535
+msgid "Working Papers"
+msgstr "Δημοσιεύσεις σε εξέλιξη"
+
+#: .\website\templates\header.html:106 .\website\templates\index.html:182
+#: .\website\templates\regular_page.html:191
+#: .\website\templates\regular_page.html:424
+#: .\website\templates\regular_page.html:536
+msgid "Journal Papers"
+msgstr "Δημοσιεύσεις Περιοδικών"
+
+#: .\website\templates\header.html:107 .\website\templates\index.html:183
+#: .\website\templates\regular_page.html:192
+#: .\website\templates\regular_page.html:425
+#: .\website\templates\regular_page.html:537
+msgid "Conference Papers"
+msgstr "Δημοσιεύσεις Κοινότητας"
+
+#: .\website\templates\header.html:108 .\website\templates\index.html:184
+#: .\website\templates\regular_page.html:193
+#: .\website\templates\regular_page.html:426
+#: .\website\templates\regular_page.html:538
+msgid "Books"
+msgstr "Βιβλία"
+
+#: .\website\templates\header.html:111 .\website\templates\header.html:161
+msgid "ACADEMICS"
+msgstr "ΑΚΑΔΗΜΑΪΚΑ"
+
+#: .\website\templates\header.html:113 .\website\templates\header.html:163
+msgid "Courses"
+msgstr "Μαθήματα"
+
+#: .\website\templates\header.html:114 .\website\templates\header.html:164
+#: .\website\templates\regular_page.html:642
+#: .\website\templates\regular_page.html:664
+#: .\website\templates\regular_page.html:686
+#: .\website\templates\regular_page.html:709
+#: .\website\templates\regular_page.html:730
+msgid "Software"
+msgstr "Λογισμικό"
+
+#: .\website\templates\header.html:115 .\website\templates\header.html:165
+#: .\website\templates\regular_page.html:760
+#: .\website\templates\regular_page.html:779
+#: .\website\templates\regular_page.html:800
+msgid "Useful Links"
+msgstr "Χρήσιμοι Σύνδεσμοι"
+
+#: .\website\templates\header.html:118
+msgid "NEWS"
+msgstr "ΝΕΑ"
+
+#: .\website\templates\header.html:119
+msgid "CONTACT"
+msgstr "ΕΠΙΚΟΙΝΩΝΙΑ"
+
+#: .\website\templates\index.html:16
+msgid "Transportation Systems and Logistics Laboratory"
+msgstr "Εργαστήριο Μεταφορών και Εφοδιαστικής Αλυσίδας"
+
+#: .\website\templates\index.html:19 .\website\templates\index.html:35
+#: .\website\templates\index.html:67 .\website\templates\index.html:83
+#: .\website\templates\regular_page.html:263
+msgid "Learn More"
+msgstr "Μάθετε Περισσότερα"
+
+#: .\website\templates\index.html:32
+msgid "Research Projects"
+msgstr "Έρευνα"
+
+#: .\website\templates\index.html:48
+msgid "Athens University of Economics and Business"
+msgstr "Οικονομικό Πανεπιστήμιο Αθηνών"
+
+#: .\website\templates\index.html:51
+msgid "Visit Site"
+msgstr "Επίσημο site"
+
+#: .\website\templates\index.html:64
+msgid "Scientific Research"
+msgstr "Επιστημονική Έρευνα"
+
+#: .\website\templates\index.html:80 .\website\templates\index.html:171
+#: .\website\templates\regular_page.html:182
+#: .\website\templates\regular_page.html:469
+msgid "Publications"
+msgstr "Δημοσιεύσεις"
+
+#: .\website\templates\index.html:100
+msgid "Laboratory Research"
+msgstr "Εργαστηριακή Έρευνα"
+
+#: .\website\templates\index.html:128 .\website\templates\index.html:157
+msgid ""
+"Our Laboratory is involved in many projects on the topics of transporations, "
+"logistics and supply chain management. A supply chain is a system of "
+"organizations, people, activities, information, and resources involved in "
+"moving a product or service from supplier to customer."
+msgstr ""
+
+#: .\website\templates\index.html:130 .\website\templates\index.html:159
+msgid "More"
+msgstr "Διαβάστε Περισσότερα"
+
+#: .\website\templates\index.html:166
+msgid "Research Search"
+msgstr "Αναζήτηση Έρευνας"
+
+#: .\website\templates\index.html:169 .\website\templates\regular_page.html:179
+msgid "Research Type"
+msgstr "Τύπος Έρευνας"
+
+#: .\website\templates\index.html:173 .\website\templates\index.html:191
+#: .\website\templates\index.html:201 .\website\templates\index.html:211
+#: .\website\templates\regular_page.html:181
+#: .\website\templates\regular_page.html:199
+#: .\website\templates\regular_page.html:208
+#: .\website\templates\regular_page.html:217
+msgid "All"
+msgstr "Όλα"
+
+#: .\website\templates\index.html:178
+msgid "Category (Only for Publications)"
+msgstr "Κατηγορία (Μόνο για Δημοσιεύσεις)"
+
+#: .\website\templates\index.html:189 .\website\templates\regular_page.html:197
+msgid "From Year"
+msgstr "Από Έτος"
+
+#: .\website\templates\index.html:199 .\website\templates\regular_page.html:206
+msgid "To Year"
+msgstr "Μέχρι Έτος"
+
+#: .\website\templates\index.html:209 .\website\templates\regular_page.html:215
+#: .\website\templates\regular_page.html:489
+#: .\website\templates\regular_page.html:606
+#: .\website\templates\regular_page.html:858
+msgid "Subject"
+msgstr "Θέμα"
+
+#: .\website\templates\index.html:212 .\website\templates\regular_page.html:218
+msgid "Vehicle Routing Problems"
+msgstr "Προβλήματα Δρομολόγησης Οχημάτων"
+
+#: .\website\templates\index.html:213 .\website\templates\regular_page.html:219
+msgid "Scheduling Problems"
+msgstr "Προβλήματα Προγραμματισμού"
+
+#: .\website\templates\index.html:214 .\website\templates\regular_page.html:220
+msgid "Hazardous Materials Logistical Problems"
+msgstr "Προβλήματα δρομολόγησης επικίνδυνων υλικών"
+
+#: .\website\templates\index.html:215 .\website\templates\regular_page.html:221
+msgid "Green Vehicle Routing Problem"
+msgstr "Πρόβλημα οικολογικής δρομολόγησης οχημάτων"
+
+#: .\website\templates\index.html:216 .\website\templates\regular_page.html:222
+msgid "Inventory Routing Problem"
+msgstr "Πρόβλημα δρομολόγησης αποθεμάτων"
+
+#: .\website\templates\index.html:217 .\website\templates\regular_page.html:223
+msgid "Green Inventory Routing Problem"
+msgstr "Πρόβλημα οικολογικής δρομολόγησης αποθεμάτων"
+
+#: .\website\templates\index.html:238 .\website\templates\regular_page.html:600
+msgid "News & Events"
+msgstr "Νέα και Εκδηλώσεις"
+
+#: .\website\templates\index.html:262
+msgid "Read More"
+msgstr "Διαβάστε Περισσότερα"
+
+#: .\website\templates\regular_page.html:34
+msgid "Welcome to Translog Laboratory"
+msgstr "Καλωσορίσατε στο Εργαστήριο Μεταφορών και Εφοδιαστικής Αλυσίδας"
+
+#: .\website\templates\regular_page.html:55
+msgid "Areas of Research"
+msgstr "Εργαστηριακή Έρευνα"
+
+#: .\website\templates\regular_page.html:87
+msgid "Get In Touch"
+msgstr "Επικοινωνήστε μαζί μας"
+
+#: .\website\templates\regular_page.html:118
+msgid "Send Message"
+msgstr "Αποστολή μηνύματος"
+
+#: .\website\templates\regular_page.html:129
+msgid "Address"
+msgstr "Διεύθυνση:"
+
+#: .\website\templates\regular_page.html:187
+#: .\website\templates\regular_page.html:488
+#: .\website\templates\regular_page.html:605
+#: .\website\templates\regular_page.html:857
+msgid "Category"
+msgstr "Κατηγορία"
+
+#: .\website\templates\regular_page.html:248
+msgid "Latest Projects"
+msgstr "Πρόσφατα Πρότζεκτς"
+
+#: .\website\templates\regular_page.html:275
+#: .\website\templates\regular_page.html:421
+#: .\website\templates\regular_page.html:533
+msgid "Categories"
+msgstr "Κατηγορίες"
+
+#: .\website\templates\regular_page.html:298
+msgid "Latest Working Papers"
+msgstr "Πρόσφατες Δημοσιεύσεις σε Εξέλιξη"
+
+#: .\website\templates\regular_page.html:329
+msgid "Latest Journal Papers"
+msgstr "Πρόσφατες Δημοσιεύσεις Περιοδικών"
+
+#: .\website\templates\regular_page.html:359
+msgid "Latest Conference Papers"
+msgstr "Πρόσφατες Δημοσιεύσεις Κοινότητας"
+
+#: .\website\templates\regular_page.html:389
+msgid "Latest Books"
+msgstr "Πρόσφατα Βιβλία"
+
+#: .\website\templates\regular_page.html:487
+#: .\website\templates\regular_page.html:604
+#: .\website\templates\regular_page.html:856
+msgid "Type"
+msgstr "Τύπος"
+
+#: .\website\templates\regular_page.html:490
+msgid "Authors"
+msgstr "Συγγραφείς"
+
+#: .\website\templates\regular_page.html:491
+#: .\website\templates\regular_page.html:607
+#: .\website\templates\regular_page.html:860
+msgid "Title"
+msgstr "Τίτλος"
+
+#: .\website\templates\regular_page.html:493
+#: .\website\templates\regular_page.html:862
+msgid "Journal"
+msgstr "Περιοδικό"
+
+#: .\website\templates\regular_page.html:494
+#: .\website\templates\regular_page.html:863
+msgid "Volume"
+msgstr "Τεύχος"
+
+#: .\website\templates\regular_page.html:495
+#: .\website\templates\regular_page.html:864
+msgid "Number"
+msgstr "Αριθμός"
+
+#: .\website\templates\regular_page.html:497
+#: .\website\templates\regular_page.html:865
+msgid "Conference"
+msgstr "Συνέδριο"
+
+#: .\website\templates\regular_page.html:499
+#: .\website\templates\regular_page.html:866
+msgid "Publisher"
+msgstr "Εκδότης"
+
+#: .\website\templates\regular_page.html:501
+#: .\website\templates\regular_page.html:861
+msgid "Year"
+msgstr "Έτος"
+
+#: .\website\templates\regular_page.html:572
+#: .\website\templates\regular_page.html:573
+msgid "Download CV"
+msgstr "Λήψη Βιογραφικού"
+
+#: .\website\templates\regular_page.html:608
+msgid "Date"
+msgstr "Ημερομηνία"
+
+#: .\website\templates\regular_page.html:648
+msgid "Linear and Integer Programming"
+msgstr "Γραμμικός και Ακέραιος Προγραμματισμός"
+
+#: .\website\templates\regular_page.html:670
+msgid "Decision Trees"
+msgstr "Δένδρα Αποφάσεων"
+
+#: .\website\templates\regular_page.html:691
+msgid "Risk Management"
+msgstr "Διαχείριση Κινδύνου"
+
+#: .\website\templates\regular_page.html:714
+msgid "Multicriteria Analysis"
+msgstr "Πολυκριτηριακή Ανάλυση"
+
+#: .\website\templates\regular_page.html:735
+msgid "Vehicle Routing"
+msgstr "Δρομολόγηση Οχημάτων"
+
+#: .\website\templates\regular_page.html:784
+msgid "Operational Research"
+msgstr "Επιχειρησιακή Έρευνα"
+
+#: .\website\templates\regular_page.html:805
+msgid "Production and Operations Management"
+msgstr "Διοίκηση Παραγωγής και Υπηρεσιών"
+
+#: .\website\templates\regular_page.html:827
+msgid "Educational Level"
+msgstr "Επίπεδο"
+
+#: .\website\templates\regular_page.html:852
+msgid "Research Results"
+msgstr "Αποτελέσματα Έρευνας"
+
+#: .\website\templates\regular_page.html:859
+msgid "Author"
+msgstr "Συγγραφείς"
+
+#: .\website\views.py:33
+msgid "Thank you! We received your message!"
+msgstr "Ευχαριστούμε! Δεχθήκαμε το μήνυμα σας!"
+
+#: .\website\views.py:50
+msgid "Message was not sent"
+msgstr "Το μήνυμα δεν εστάλη"
+
+#~ msgid "Graduate"
+#~ msgstr "Μεταπτυχιακό"
+
+#~ msgid "Undergraduate"
+#~ msgstr "Προπτυχιακό"
+
+#~ msgid "Previous"
+#~ msgstr "Προηγούμενη"
+
+#~ msgid "Send"
+#~ msgstr "Αποστολή"
+
+#~ msgid "Location"
+#~ msgstr "Τοποθεσία"
+
+#~ msgid "Find more about our research material"
+#~ msgstr "Μάθετε περισσότερα για το υλικό της έρευνας μας"
+
+#~ msgid "Academic News and Current Events"
+#~ msgstr "Ακαδημαϊκά Νέα και Τρέχων Εκδηλώσεις"
+
+#~ msgid "View All News & Events"
+#~ msgstr "Όλα τα Νέα και Εκδηλώσεις"
+
+#~ msgid "Telephone:"
+#~ msgstr "Τηλέφωνο:"
+
+#~ msgid "Mobile:"
+#~ msgstr "Κινητό:"
+
+#~ msgid "CV:"
+#~ msgstr "Βιογραφικό"
+
+#~ msgid "Login"
+#~ msgstr "Σύνδεση"
+
+#~ msgid "Register"
+#~ msgstr "Εγγραφή"
+
+#~ msgid "Sitemap"
+#~ msgstr "Χάρτης"
+
+#~ msgid "Logout"
+#~ msgstr "Έξοδος"
+
+#~ msgid "Fax:"
+#~ msgstr "Φαξ:"
+
+#~ msgid "Distinctions and Awards"
+#~ msgstr "Βραβεία"
+
+#~ msgid "CV (English):"
+#~ msgstr "Βιογραφικό (Αγγλικά)"
+
+#~ msgid "CV (Greek):"
+#~ msgstr "Βιογραφικό (Ελληνικά)"
+
+#~ msgid "Filters:"
+#~ msgstr "Φίλτρα:"
+
+#~ msgid "Funded by"
+#~ msgstr "Χρηματοδοτήθηκε από"
+
+#~ msgid "No content matches the criteria"
+#~ msgstr "Δεν υπάρχει περιεχόμενο"

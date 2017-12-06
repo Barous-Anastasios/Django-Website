@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load compress %}
+
+{% block content %}
+<section class="breadcrumbs-area  ptb-110 bg-opacity bg-relative" style="background: url('{% static "images/breadcrumbs-image.jpg" %}' )">
+	<div class="container">
+	    <div class="row">
+	        <div class="col-md-12 text-center">
+	            <div class="breadcrumbs">
+	                <h2 class="page-title">{{current_page.title}}</h2>
+	                <ul>
+	                    <li>
+	                        <a class="active" href="/{{LANGUAGE_CODE}}/">Home</a>
+	                    </li>
+	                    <li>
+	                        <a href="{% for page in pages %}{% if page.title == current_page.title %}{% url 'regular_page' LANGUAGE_CODE current_page.friendlyurl %}{% endif %}{% endfor %}">{{current_page.title}}</a>
+	                    </li>
+	                    <li>
+	                        {{content.title|truncatechars:"40"}}
+	                    </li>
+	                </ul>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</section>
+<section class="courses-details ptb-50">
+    <div class="container">
+		<div class="row">
+	        <div class="col-md-5 col-sm-12">
+	            <div class="courses-information gray-bg">
+	                <h3 class="sidebar-title">Information </h3>
+	                <ul class="sidebar-menu" style="padding-bottom: 40px;">
+	                    {% if content.content %}<li>Type :<span>{{content.content}}</span></li>{% endif %}
+	                    {% if content.sub_category %}<li>Category :<span>{{content.sub_category}}</span></li>{% endif %}
+	                    {% if content.sub_sub_category %}<li>Subject :<span>{{content.sub_sub_category}}</span></li>{% endif %}
+	                    {% if content.start_date %}<li>Start Date :<span>{{content.start_date}}</span></li>{% endif %}
+	                    {% if content.end_date %}<li>End Date :<span>{{content.end_date}}</span></li>{% endif %}
+	                    {% if content.funded %}<li>Funded by :<span>{{content.funded}}</span></li>{% endif %}
+	                    {% if content.author %}<li>Author/s :<span>{{content.author}}</span></li>{% endif %}
+	                    {% if content.location %}<li>Location :<span>{{content.location}}</span></li>{% endif %}
+	                    {% if content.url %}<li>Relative url :<span class="linking"><a href="{{content.url}}" target="_blank">here</a></span></li>{% endif %}
+	                </ul>
+	            </div>
+	        </div>
+	        <div class="col-md-7 col-sm-12">
+	        	{% if content.image %}<img src="{{content.image.url}}" height="100" width="300"><br><br>{% endif %}
+				<div class="about-lectures">
+	                {% if content.description %}<h3>{% if content.title %}{{content.title}}{% endif %}</h3>{% else %}<p>{{content.title}}</p>{% endif %}
+	                {% if content.description %}{{content.description|safe}}{% endif %}
+	            </div>
+	        </div>
+        </div>
+    </div>
+</section>
+
+<section class="courses-details pb-50">
+	<div class="container">
+		<div class="row">
+			<div class="text-center">
+				<input style="width: 120px;padding-left: 3px;text-align: center;background: #2196F3;color:white;" type=button value="Back" onClick="javascript:history.go(-1);">
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

@@ -1,0 +1,1046 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load my_tags %}
+{% load compress %}
+{% load i18n %}
+
+{% block content %}
+<section class="breadcrumbs-area  ptb-110 bg-opacity bg-relative" style="background: url('{% static "images/slider/1.jpg" %}' )">
+	<div class="container">
+	    <div class="row">
+	        <div class="col-md-12 text-center">
+	            <div class="breadcrumbs">
+	                <h2 class="page-title">{{current_page.title}}</h2>
+	                <ul>
+	                    <li>
+	                        <a class="active" href="/{{LANGUAGE_CODE}}/">{% trans 'Home' %}</a>
+	                    </li>
+	                    <li>
+	                        {{current_page.title|truncatechars:"30"}}
+	                    </li>
+	                </ul>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</section>
+
+{% if current_page.title_en == "About" %}
+<!-- Start page content -->
+<section class="about-area ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="about-text pb-20" style="margin-top: 0px;">
+                <h2 class="text-center">{% trans 'Welcome to TransLog Center' %}</h2>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="book-img">
+                    <img class="animated slideInLeft" alt="#" src="{% static 'images/about.jpg' %}">
+                </div>
+            </div>
+            <div class="about-text animated slideInRight" style="margin-top: 12px;margin-left: 35px;">
+                {{lab_details.description|safe}}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% if current_page.title_en == "Areas" %}
+<!-- Start page content -->
+<section class="about-area ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="about-text pb-20" style="margin-top: 0px;">
+                <h2 class="text-center">{% trans 'Areas of Research' %}</h2>
+            </div>
+            <div class="col-xs-12">
+                <div class="book-img">
+                    <img class="animated slideInRight" alt="#" src="{{content_category.0.image.url}}" height="400" width="200">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="about-text animated slideInLeft" style="margin-top: 12px;">
+                    {{content_category.0.description|safe|slice:"1115"}}
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="about-text animated slideInLeft" style="margin-top: 12px;">
+                    {{content_category.0.description|safe|slice:"1115:"}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+{% if current_page.title_en == "Contact" %}
+<!-- Start page content -->
+<section class="contact-area ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contact-area-all">
+                    <div id="hastech2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-sm-8">
+                <div class="conract-area-bottom pt-50">
+                    <h3 class="main-contact">{% trans 'Get In Touch' %}</h3>
+                    <form method="POST">{% csrf_token %}
+                        {{form.non_field_errors}}
+                        <div class="row">
+                            {% for field in form.visible_fields|slice:"1" %}
+                            <div class="col-md-6">
+                                <div class="main-input">
+                                    {{field.errors}}
+                                    {{field}}
+                                    {{field.help_text}}
+                                    <i class="icofont icofont-hotel-boy"></i>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% for field in form.visible_fields|slice:"1:2" %}
+                            <div class="col-md-6">
+                                <div class="main-input mrg-eml">
+                                    {{field.errors}}
+                                    {{field}}
+                                    {{field.help_text}}
+                                    <i class="icofont icofont-envelope"></i>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <br><br><br>
+                            {% for field in form.visible_fields|slice:"2:" %}
+                            <div class="col-md-12">
+                                <div class="text-leave2">
+                                    {{field.errors}}
+                                    {{field}}
+                                    {{field.help_text}}
+                                    <button class="submit" type="submit">{% trans 'Send Message' %}</button>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </form>
+                    <!-- <p class="form-messege"></p> -->
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="communication-all pt-50">
+                    <h3 class="main-contact">{% trans 'Address' %}</h3>
+                    <div class="single-communication mb-20">
+                        <div class="communication-icon">
+                            <i class="icofont icofont-social-google-map"></i>
+                        </div>
+                        <div class="communication-text">
+                            <p>{{lab_details.address}} </p>
+                        </div>
+                    </div>
+                    <div class="single-communication mb-20">
+                        <div class="communication-icon">
+                            <i class="icofont icofont-ui-call"></i>
+                        </div>
+                        <div class="communication-text">
+                            <p>{{lab_details.phone}}</p>
+                        </div>
+                    </div>
+                    <div class="single-communication">
+                        <div class="communication-icon">
+                            <i class="icofont icofont-envelope"></i>
+                        </div>
+                        <div class="communication-text">
+                            <p>
+                                <a href="mailto:{{lab_details.email}}">{{lab_details.email}}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End page content -->
+{% endif %}
+
+<style type="text/css">
+    .courses-area .orderby-wrapper {
+        width: 14.1%;
+    }
+
+    @media only screen and (max-width: 770px){
+        .courses-area .orderby-wrapper {
+            width: -webkit-fill-available;
+        }
+    }
+</style>
+
+{% if content.0.content == "Publications" or content_category.0.sub_category == "Projects" or current_page.title_en == "Research Search" or "Papers" in current_page.title_en or "Books" == current_page.title_en %}
+<section class="top-courses pt-50 pb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="courses-area bg-opacity bg-relative ptb-20" style="background: #2d3e50;">
+                    <div class="courses pr-100 pl-100" style="margin-bottom: 27px;">
+                        <form id="research-form" class="ordering" method="POST" action="{% for page in pages %}{% if page.title_en == "Research Search" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% csrf_token %}
+                            <div class="orderby-wrapper">
+                                <label>{% trans 'Research Type' %}</label>
+                                <select name="research-type" id="research-type" style="color:white;height: 40px;background: inherit;border: 0.5px solid white;">
+                                    <option style="color:black; id="default-search" value="default" {% if search_list.0 == 'default' %}selected='selected'{% endif %}>{% trans 'All' %}</option>
+                                    <option style="color:black; id="Publications-search" value="Publications" {%  if search_list.0 != "default" %}{% if search_list.0 == 'Publications' or content.0.content == "Publications" %}selected='selected'{% endif %}{% endif %}>{% trans 'Publications' %}</option>
+                                    <option style="color:black; id="Projects-search" value="Projects"  {% if search_list.0 == 'Projects' or current_page.title_en == "Projects" %}selected='selected'{% endif %}>{% trans 'Projects' %}</option>
+                                </select>
+                            </div>
+                            <div class="orderby-wrapper mrg-chosen">
+                                <label>{% trans 'Category' %}</label>
+                                <select name="research-category" id="research-category" disabled="disabled" style="color:white;height: 40px;background: inherit;border: 0.5px solid white;">
+                                    <option style="color:black;" id="default-cat" value="default" {% if search_list.1 == 'default' %}selected='selected'{% endif %} >-</option>
+                                    <option style="color:black;" id="Working-Papers" value="Working Papers" {% if search_list.1 == 'Working Papers' or current_page.title_en == "Working Papers" %}selected='selected'{% endif %}>{% trans 'Working Papers' %}</option>
+                                    <option style="color:black;" id="Journal Papers" value="Journal Papers" {% if search_list.1 == 'Journal Papers' or current_page.title_en == "Journal Papers" %}selected='selected'{% endif %}>{% trans 'Journal Papers' %}</option>
+                                    <option style="color:black;" id="Conference Papers" value="Conference Papers" {% if search_list.1 == 'Conference Papers' or current_page.title_en == "Conference Papers" %}selected='selected'{% endif %}>{% trans 'Conference Papers' %}</option>
+                                    <option style="color:black;" id="Books" value="Books" {% if search_list.1 == 'Books' or current_page.title_en == "Books" %}selected='selected'{% endif %}>{% trans 'Books' %}</option>
+                                </select>
+                            </div>
+                            <div class="orderby-wrapper">
+                                <label>{% trans 'From Year' %}</label>
+                                <select name="date_from" id="research-date-from" style="color:white;height: 40px;background: inherit;border: 0.5px solid white;">
+                                    <option style="color:black; id="default-search" value="0" {% if search_list.2 == '0' %}selected='selected'{% endif %}>{% trans 'All' %}</option>
+                                    {% for item in calendar %}
+                                    <option style="color:black; id="default-search" {% if search_list.2 == item %}selected='selected'{% endif %} value="{{item}}">{{item}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="orderby-wrapper">
+                                <label>{% trans 'To Year' %}</label>
+                                <select name="date_to" id="research-date-to" style="color:white;height: 40px;background: inherit;border: 0.5px solid white;">
+                                    <option style="color:black; id="default-search" value="3000" {% if search_list.3 == '3000' %}selected='selected'{% endif %}>{% trans 'All' %}</option>
+                                    {% for item in calendar %}
+                                    <option style="color:black; id="default-search" {% if search_list.3 == item %}selected='selected'{% endif %} value="{{item}}">{{item}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="orderby-wrapper">
+                                <label>{% trans 'Subject' %}</label>
+                                <select name="subject" style="color:white;height: 40px;background: inherit;border: 0.5px solid white;">
+                                    <option style="color:black; value="default" {% if search_list.4 == 'default' %}selected='selected'{% endif %}>{% trans 'All' %}</option>
+                                    <option style="color:black; value="Vehicle Routing Problems" {% if search_list.4 == 'Vehicle Routing Problems' %}selected='selected'{% endif %}">{% trans 'Vehicle Routing Problems' %}</option>
+                                    <option style="color:black; value="Scheduling Problems" {% if search_list.4 == 'Scheduling Problems' %}selected='selected'{% endif %}>{% trans 'Scheduling Problems' %}</option>
+                                    <option style="color:black; value="Hazardous Materials Logistical Problems" {% if search_list.4 == 'Hazardous Materials Logistical Problems' %}selected='selected'{% endif %}>{% trans 'Hazardous Materials Logistical Problems' %}</option>
+                                    <option style="color:black; value="Green Vehicle Rourting Problem" {% if search_list.4 == 'Green Vehicle Rourting Problem' %}selected='selected'{% endif %}>{% trans 'Green Vehicle Routing Problem' %}</option>
+                                    <option style="color:black; value="Inventory Routing Problem" {% if search_list.4 == 'Inventory Routing Problem' %}selected='selected'{% endif %}>{% trans 'Inventory Routing Problem' %}</option>
+                                    <option style="color:black; value="Green Inventory Routing Problem" {% if search_list.4 == 'Green Inventory Routing Problem' %}selected='selected'{% endif %}>{% trans 'Green Inventory Routing Problem' %}</option>
+                                </select>
+                            </div>
+                            <div class="chosen-submit" style="margin-top: 27px;">
+                                <button class="submit" type="submit">{% trans 'Search' %}</button>
+                            </div><span class='popup' id='mymessage' style='color:white;position: absolute;top:80px;visibility: hidden;'>Wrong Dates! Try again</span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% if current_page.title_en  == "Research" %}
+<!-- Start page content -->
+<section class="courses-details ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-8">
+                <div class="course-left-sidebar">
+                    <div class="course-details-img">
+                        <div class="free-area">
+                            <div class="free-text">
+                                <p>{% trans 'Latest Projects' %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for thing in content|get_correct_subs:"Projects"|slice:"3" %}
+                        <div class="col-md-4 col-lg-4 col-sm-6">
+                            <div class="blog-all mrg-xs">
+                                <div class="blog-img">
+                                    <a>{% if thing.image %}<img src="{{thing.image.url}}" width="270" style="height: 130px;border:solid #c1c1c1 1px; " alt="" >{% else %} <img src="{% static 'images/no-image2.png' %}" width="270" style="height: 130px;border:solid #c1c1c1 1px; " alt="" >{% endif %}</a>
+                                </div>
+                                <div class="blog-details gray-bg" style="height: 290px;">
+                                    <h3><a href="{% for page in pages %}{% if page.title_en == 'Projects' %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}">{{thing.title}}</a></h3>
+                                    <p>{{thing.description|safe|truncatechars:"185"}} </p>
+                                    <a class="button extra-small" href="{% for page in pages %}{% if page.title == 'Projects' %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}">
+                                        <span>{% trans 'Learn More' %}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="course-sidebar mrg-xs">
+                    <div class="course-categoris" style="margin-top: 22px;">
+                        <h3 class="cate-title">{% trans 'Categories' %}</h3>
+                        <ul>
+                            <li><a href="{% for page in pages %}{% if page.title_en == 'Projects' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Projects' %}<span>{{content|get_correct_counts:"Projects"}}</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End page content -->
+{% endif %}
+
+{% if current_page.title_en  == "Publications" %}
+<!-- Start page content -->
+<section class="courses-details pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-8">
+                <div class="course-left-sidebar">
+                    <div class="course-details-img">
+                        <div class="free-area">
+                            <div class="free-text">
+                                <p>{% trans 'Latest Working Papers' %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for thing in content|get_correct_subs:"Working Papers"|slice:"3" %}
+                        <div class="col-md-4 col-lg-4 col-sm-4">
+                            <div class="blog-all mrg-xs">
+                                <div class="blog-img">
+                                    <a href="#">{% if thing.image %}<img src="{{thing.image.url}}" width="270" height="120" alt="" >{% else %}<img src="{% static 'images/no-image2.png' %}" height="110" alt="" style="border:solid lightgray 1px;">{% endif %}</a>
+                                </div>
+                                <div class="blog-details gray-bg">
+                                    <h3><a style="font-size: 14px;" href="{% for page in pages %}{% if page.title == 'Working Papers' %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}">{{thing.title}}</a></h3>
+<!--                                     <div class="blog-meta">
+                                        <span class="published3">
+                                            <a href="#"><i class="icofont icofont-eye"></i> {{thing.views}}</a>
+                                        </span>
+                                    </div> -->
+                                    <p>{% if thing.description %}{{thing.description|safe|truncatechars:"105"}}{% endif %}</p>
+                                    <a class="button extra-small" href="{% for page in pages %}{% if page.title == 'Working Papers' %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}">
+                                        <span>Learn More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <br><br>
+                    <div class="course-details-img">
+                        <div class="free-area">
+                            <div class="free-text">
+                                <p>{% trans 'Latest Journal Papers' %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for thing in content|get_correct_subs:"Journal Papers"|slice:"3" %}
+                        <div class="col-md-4 col-lg-4 col-sm-4">
+                            <div class="blog-all mrg-xs">
+                                <div class="blog-img">
+                                    <a href="#">{% if thing.image %}<img src="{{thing.image.url}}" width="270" height="120" alt="" >{% else %}<img src="{% static 'images/no-image2.png' %}" height="110" alt="" style="border:solid lightgray 1px;">{% endif %}</a>
+                                </div>
+                                <div class="blog-details gray-bg" style="min-height: 280px;">
+                                    <h3><a style="font-size: 14px;" href="{% for page in pages %}{% if page.title_en == 'Journal Papers' %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}">{{thing.title}}</a></h3>
+<!--                                     <div class="blog-meta">
+                                        <span class="published3">
+                                            <a href="#"><i class="icofont icofont-eye"></i> {{thing.views}}</a>
+                                        </span>
+                                    </div> -->
+                                    <p>{% if thing.description %}{{thing.description|safe|truncatechars:"105"}}{% endif %}</p>
+                                    <a class="button extra-small" href="{% for page in pages %}{% if page.title == 'Journal Papers' %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}">
+                                        <span>Learn More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div><br><br>
+                    <div class="course-details-img">
+                        <div class="free-area">
+                            <div class="free-text">
+                                <p>{% trans 'Latest Conference Papers' %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for thing in content|get_correct_subs:"Conference Papers"|slice:"3" %}
+                        <div class="col-md-4 col-lg-4 col-sm-4">
+                            <div class="blog-all mrg-xs">
+                                <div class="blog-img">
+                                    <a href="#">{% if thing.image %}<img src="{{thing.image.url}}" width="270" height="120" alt="" >{% else %}<img src="{% static 'images/no-image2.png' %}" height="110" alt="" style="border:solid lightgray 1px;">{% endif %}</a>
+                                </div>
+                                <div class="blog-details gray-bg">
+                                    <h3><a style="font-size: 14px;" href="{% for page in pages %}{% if page.title == 'Conference Papers' %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}">{{thing.title}}</a></h3>
+<!--                                     <div class="blog-meta">
+                                        <span class="published3">
+                                            <a href="#"><i class="icofont icofont-eye"></i> {{thing.views}}</a>
+                                        </span>
+                                    </div> -->
+                                    <p>{% if thing.description %}{{thing.description|safe|truncatechars:"105"}}{% endif %}</p>
+                                    <a class="button extra-small" href="{% for page in pages %}{% if page.title == 'Conference Papers' %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}">
+                                        <span>Learn More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div><br><br>
+                    <div class="course-details-img">
+                        <div class="free-area">
+                            <div class="free-text">
+                                <p>{% trans 'Latest Books' %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for thing in content|get_correct_subs:"Books"|slice:"3" %}
+                        <div class="col-md-4 col-lg-4 col-sm-4">
+                            <div class="blog-all mrg-xs">
+                                <div class="blog-img">
+                                    <a href="#">{% if thing.image %}<img src="{{thing.image.url}}" width="270" height="204" alt="" >{% else %}<img src="{% static 'images/no-image2.png' %}" height="110" alt="" style="border:solid lightgray 1px;">{% endif %}</a>
+                                </div>
+                                <div class="blog-details gray-bg">
+                                    <h3><a style="font-size: 14px;" href="{% for page in pages %}{% if page.title == 'Books' %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}">{{thing.title}}</a></h3>
+<!--                                     <div class="blog-meta">
+                                        <span class="published3">
+                                            <a href="#"><i class="icofont icofont-eye"></i> {{thing.views}}</a>
+                                        </span>
+                                    </div> -->
+                                    <p>{% if thing.description %}{{thing.description|safe|truncatechars:"105"}}{% endif %}</p>
+                                    <a class="button extra-small" href="{% for page in pages %}{% if page.title == 'Books' %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}">
+                                        <span>Learn More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="course-sidebar mrg-xs">
+                    <div class="course-categoris" style="margin-top: 22px;">
+                        <h3 class="cate-title">{% trans 'Categories' %}</h3>
+                        <ul>
+                            <li><a href="{% for page in pages %}{% if page.title_en == 'Working Papers' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Working Papers' %}<span>{{content|get_correct_counts:"Working Papers"}}</span></a></li>
+                            <li><a href="{% for page in pages %}{% if page.title_en == 'Journal Papers' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Journal Papers' %}<span>{{content|get_correct_counts:"Journal Papers"}}</span></a></li>
+                            <li><a href="{% for page in pages %}{% if page.title_en == 'Conference Papers' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Conference Papers' %}<span>{{content|get_correct_counts:"Conference Papers"}}</span></a></li>
+                            <li><a href="{% for page in pages %}{% if page.title_en == 'Books' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Books' %}<span>{{content|get_correct_counts:"Books"}}</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End page content -->
+{% endif %}
+
+{% if content_category.0.content == "Publications" and content_category.0.sub_category or content_category.0.sub_category == "Projects" %}
+<section class="top-courses {% if current_page.title_en != "Projects" %} pb-50 {% endif %}">
+    <div class="container">
+        <div class="row">
+            {% if current_page.title_en == "Projects" %}<div class="col-xs-12" style="padding-left: 0px;padding-right:0px;">{% else %}<div class="col-md-9 col-xs-12"> {% endif %}
+                {% if content_category.0.sub_category == "Projects" %}
+                    {% for thing in content_category_paginated %}
+                        <div class="col-md-4 col-sm-6">
+                            <div class="news-are mrg-xs" style="margin-bottom: 20px;">
+                                <div class="news-img">
+                                    <img {% if thing.image %}src="{{thing.image.url}}"{% else %}src="{% static 'images/no-image2.png' %}{% endif %}" alt="" height="140" style="border:solid black 1px;">
+                                    <div class="news-date navy-bg" style="position: relative;width: auto;bottom: 0px;left: 0px;">
+                                        <div class="blog-meta-2" style="padding-top: 0px;">
+                                            <span class="published3">
+                                                <i class="icofont icofont-certificate-alt-2"></i>
+                                                {{thing.sub_category}}{{thing.faculty}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="img-text gray-bg" style="min-height: 300px;">
+                                    <h3><a href="{% for page in pages %}{% if page.title == current_page.title_en %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}">{% if thing.title %}{{thing.title}}{% endif %}</a></h3>
+                                    <p style="padding: 0px;">{% if thing.description %}{{thing.description|safe|truncatechars:"190"}}{% endif %} </p>
+                                    <a class="button extra-small" href="{% for page in pages %}{% if page.title == current_page.title %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}">
+                                        <span>Read More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="courses-information gray-bg">
+                        <h3 class="sidebar-title text-center">{% trans 'Publications' %} </h3>
+                        <style type="text/css">table {
+                            border-collapse: collapse;
+                            width: 100%;
+                        }
+
+                        td, th {
+                            border: 1px solid #dddddd;
+                            text-align: center;
+                            padding: 8px;
+                        }
+
+                        tr:nth-child(even) {
+                            background-color: #dddddd;
+                        }</style>
+                        <table id="myTable" class="display" cellspacing="0" width="100%" style="padding-bottom: 40px;">
+                            <thead>
+                                <tr>
+                                    <th>{% trans 'Title' %}</th>
+                                    <th>{% trans 'Subject' %}</th>
+                                    <th>{% trans 'Authors' %}</th>
+                                    {% if content_category.0.sub_category == "Journal Papers" %}
+                                        <th>{% trans 'Journal' %}</th>
+                                        <th>{% trans 'Volume-Number' %}</th>
+                                    {% elif content_category.0.sub_category == "Conference Papers" %}
+                                        <th>{% trans 'Conference' %}</th>
+                                    {% elif content_category.0.sub_category == "Books" %}
+                                        <th>{% trans 'Publisher' %}</th>
+                                    {% endif %}
+                                    <th>{% trans 'Year' %}</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                {% for thing in content_category %}
+                                    <tr>
+                                        <td class="linking"><a style="color:black;" href="{% for page in pages %}{% if page.title_en == current_page.title_en %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}" >{{thing.title}}</a></td>
+                                        <td>{{thing.sub_sub_category}}</td>
+                                        <td>{{thing.author}}</td>
+                                        {% if content_category.0.sub_category == "Journal Papers" %}
+                                            <td>{{thing.journal}}</td>
+                                            <td>{{thing.volume}}</td>
+                                        {% elif content_category.0.sub_category == "Conference Papers" %}
+                                            <td>{{thing.conference}}</td>
+                                        {% elif content_category.0.sub_category == "Books" %}
+                                            <td>{{thing.publisher}}</td>
+                                        {% endif %}
+                                        <td>{{thing.year}}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            </div>{% if content_category.0.sub_category != "Projects" %}
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="course-sidebar mrg-xs">
+                        <div class="course-categoris">
+                            <h3 class="cate-title">{% trans 'Categories' %}</h3>
+                            <ul>{% if content_category.0.sub_category != "Projects" %}
+                                <li><a href="{% for page in pages %}{% if page.title_en == 'Working Papers' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Working Papers' %}<span>{{content|get_correct_counts:"Working Papers"}}</span></a></li>
+                                <li><a href="{% for page in pages %}{% if page.title_en == 'Journal Papers' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Journal Papers' %}<span>{{content|get_correct_counts:"Journal Papers"}}</span></a></li>
+                                <li><a href="{% for page in pages %}{% if page.title_en == 'Conference Papers' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Conference Papers' %}<span>{{content|get_correct_counts:"Conference Papers"}}</span></a></li>
+                                <li><a href="{% for page in pages %}{% if page.title_en == 'Books' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Books' %}<span>{{content|get_correct_counts:"Books"}}</span></a></li>{% else %}<li><a href="{% for page in pages %}{% if page.title == 'Projects' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">Projects<span>{{content|get_correct_counts:"Projects"}}</span></a></li>{% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>{% endif %}
+                {% endif %}
+            </div>
+		</div>
+	</div>
+</section>
+
+{% if content.0.name %}
+<!-- Start page content -->
+<section class="events-page ptb-50">
+    <div class="container">
+        {% for thing in content %}
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                    <div class="event-img3" style="border:solid lightgray 1px;background: #f2f2f2;border-right: none;{% if current_page.title_en == 'Head of Translog' %}min-height: 440px;{% else %}min-height:245px;{% endif %}">
+                        <a>{% if thing.image %}<img src="{{thing.image.url}}" height="120" style="width: 120px;border:solid #c1c1c1 1px;" alt="" >{% else %}
+                        <img src="{% static 'images/no-image2.png' %}" alt="" >{% endif %}</a>
+                    </div>
+                <div class="event-text-img">
+                    <div class="visual-inner" style="{% if current_page.title_en == 'Head of Translog' %}min-height: 440px;{% else %}min-height:245px;{% endif %}border-top: solid #c1c1c1 1px;padding: 20px;">
+                        <h3 class="blog-title" style="margin-left: 10px;margin-bottom: 20px;">
+                            <a>{{thing.name}}</a>
+                        </h3>
+                        <div class="blog-meta" style="margin-bottom: 20px;"">{% if thing.email %}
+                            <span class="published3" style="margin-left: 10px;">
+                                <a href="mailto:{{thing.email}}"><i class="icofont icofont-email"></i>
+                                {{thing.email}}</a>
+                            </span>{% endif %}{% if thing.cv_gr or thing.cv_en %}
+                            <span class="published3" style="margin-left: 10px;">
+                                <i class="icofont icofont icofont-papers"></i>{% if LANGUAGE_CODE == "en" %}{% if thing.cv_en %}
+                                <a href="{{thing.cv_en.url}}" download="{{thing.name}}_CV" class="color-black">{% trans 'Download CV' %} <i class="fa fa-download" aria-hidden="true"></i></a>{% endif %}{% else %}{% if thing.cv_gr %}
+                                <a href="{{thing.cv_gr.url}}" download="{{thing.name}}_CV" class="color-black">{% trans 'Download CV' %} <i class="fa fa-download" aria-hidden="true"></i></a>{% elif thing.cv_en %}<a href="{{thing.cv_en.url}}" download="{{thing.name}}_CV" class="color-black">{% trans 'Download CV' %} <i class="fa fa-download" aria-hidden="true"></i></a>{% endif %}{% endif %}
+                            </span>{% endif %}{% if thing.phone %}
+                            <span class="published3" style="margin-left: 10px;">
+                                <a>
+                                <i class="icofont icofont icofont-phone"></i>{{thing.phone}}</a>
+                            </span>{% endif %}
+                        </div>
+                        <div class="blog-content" style="margin-left: 10px;">
+                            {{thing.description|safe}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br><br>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+{% if current_page.title_en == "News" %}
+<section class="top-courses ptb-50">
+    <div class="container">
+        <div class="row">
+            <style type="text/css">table {border-collapse: collapse;width: 100%;}
+                                   td, th {border: 1px solid #dddddd;text-align: center;padding: 8px;}
+                                   tr:nth-child(even) {background-color: #dddddd;}</style>
+            <div class="col-xs-12">
+                <div class="courses-information gray-bg">
+                    <h3 class="sidebar-title text-center">{% trans 'News & Events' %} </h3>
+                    <table id="myTable" class="display" cellspacing="0" width="100%" style="padding-bottom: 40px;">
+                        <thead>
+                            <tr>
+                                <th>{% trans 'Title' %}</th>
+                                <!-- <th>{% trans 'Subject' %}</th> -->
+                                <th>{% trans 'Date' %}</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                        {% for thing in content %}
+                            <tr>
+                                <td class="linking"><a href="{% for page in pages %}{% if page.title_en == "News" %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}" >{{thing.title}}</a></td>
+                                <!-- <td>{{thing.sub_sub_category}}</td> -->
+                                <td>{{thing.created_at|date:'d/m/Y'}}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% if current_page.title_en == "Software" %}
+    <section class="top-courses ptb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="news-are mrg-xs">
+                        <div class="news-img">
+                            <img src="{% static 'images/math-programming.jpg' %}" height="180" alt="" >
+                            <div class="news-date navy-bg" style="left:0px;width: 100%;">
+                                <div class="blog-meta-2">
+                                    <span class="published3">
+                                        <i class="icofont icofont-certificate-alt-2"></i>
+                                        {% trans 'Software' %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="img-text gray-bg" style="min-height: 320px;">
+                            <h3 class="text-center mb-20"> {% trans 'Linear and Integer Programming' %}</h3>
+                            <ul>{% for thing in content_category %}{% if thing.sub_sub_category == "Linear and integer Programming" %}
+                                <li class="mb-10" style="list-style-type: square;"><a style="color: black;list-style-type: square;" href="{{thing.url}}" target="_blank">
+                                {{thing.title}}</a></li>{% endif %}{% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="news-are mrg-xs">
+                        <div class="news-img">
+                            <img src="{% static 'images/trees.png' %}" height="180" alt="" >
+                            <div class="news-date navy-bg" style="left:0px;width: 100%;">
+                                <div class="blog-meta-2">
+                                    <span class="published3">
+                                        <i class="icofont icofont-certificate-alt-2"></i>
+                                        {% trans 'Software' %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="img-text gray-bg" style="min-height: 320px;">
+                            <h3 class="text-center mb-20"> {% trans 'Decision Trees' %}</h3>
+                            <ul>{% for thing in content_category %}{% if thing.sub_sub_category == "Decision Trees" %}
+                                <li class="mb-10" style="list-style-type: square;"><a style="color: black;list-style-type: square;" href="{{thing.url}}" target="_blank">
+                                {{thing.title}}</a></li>{% endif %}{% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="news-are mrg-xs">
+                        <div class="news-img">
+                            <img src="{% static 'images/risk_management.jpg' %}" height="180" alt="" >
+                            <div class="news-date navy-bg" style="left:0px;width: 100%;">
+                                <div class="blog-meta-2">
+                                    <span class="published3">
+                                        <i class="icofont icofont-certificate-alt-2"></i>
+                                        {% trans 'Software' %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="img-text gray-bg" style="min-height: 320px;"><h3 class="text-center mb-20"> {% trans 'Risk Management' %}</h3>
+                            <ul>{% for thing in content_category %}{% if thing.sub_sub_category == "Risk Management" %}
+                                <li class="mb-10" style="list-style-type: square;"><a style="color: black;list-style-type: square;" href="{{thing.url}}" target="_blank">
+                                {{thing.title}}</a></li>{% endif %}{% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                </div><br>
+                <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="news-are mrg-xs">
+                        <div class="news-img">
+                            <img src="{% static 'images/analysis.jpg' %}" height="180" alt="" >
+                            <div class="news-date navy-bg" style="left:0px;width: 100%;">
+                                <div class="blog-meta-2">
+                                    <span class="published3">
+                                        <i class="icofont icofont-certificate-alt-2"></i>
+                                        {% trans 'Software' %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="img-text gray-bg" style="min-height: 320px;"><h3 class="text-center mb-20"> {% trans 'Multicriteria Analysis' %}</h3>
+                            <ul>{% for thing in content_category %}{% if thing.sub_sub_category == "Multicriteria Analysis" %}
+                                <li class="mb-10" style="list-style-type: square;"><a style="color: black;list-style-type: square;" href="{{thing.url}}" target="_blank">
+                                {{thing.title}}</a></li>{% endif %}{% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="news-are mrg-xs">
+                        <div class="news-img">
+                            <img src="{% static 'images/vehicle-routing.jpeg' %}" height="180" alt="" style="vertical-align: baseline;" >
+                            <div class="news-date navy-bg" style="left:0px;width: 100%;">
+                                <div class="blog-meta-2">
+                                    <span class="published3">
+                                        <i class="icofont icofont-certificate-alt-2"></i>
+                                        {% trans 'Software' %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="img-text gray-bg" style="min-height: 315px;"><h3 class="text-center mb-20"> {% trans 'Vehicle Routing' %}</h3>
+                            <ul>{% for thing in content_category %}{% if thing.sub_sub_category == "Vehicle Routing" %}
+                                <li class="mb-10" style="list-style-type: square;"><a style="color: black;list-style-type: square;" href="{{thing.url}}" target="_blank">
+                                {{thing.title}}</a></li>{% endif %}{% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+{% if current_page.title_en == "Useful Links" %}
+    <section class="top-courses ptb-50 useful-links">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="news-are mrg-xs">
+                        <div class="news-img">
+                            <img src="{% static 'images/scopus.jpg' %}" height="180" alt="" >
+                            <div class="news-date navy-bg" style="left:0px;width: 100%;">
+                                <div class="blog-meta-2">
+                                    <span class="published3">
+                                        <i class="icofont icofont-certificate-alt-2"></i>
+                                        {% trans 'Useful Links' %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="img-text gray-bg" style="min-height: 530px;;">
+                            <h3 class="text-center mb-20"><a href="{{content_category.0.url}}" target="_blank" style="color: black;">Scopus</a></h3>
+                            {{content_category.0.description|safe}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="news-are mrg-xs">
+                        <div class="news-img">
+                            <img src="{% static 'images/OR.jpg' %}" height="180" alt="" >
+                            <div class="news-date navy-bg" style="left:0px;width: 100%;">
+                                <div class="blog-meta-2">
+                                    <span class="published3">
+                                        <i class="icofont icofont-certificate-alt-2"></i>
+                                        {% trans 'Useful Links' %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="img-text gray-bg" style="min-height: 530px;"><h3 class="text-center mb-20">{% trans 'Operational Research' %}</h3>
+                            <ul>{% for thing in content_category %}{% if thing.sub_sub_category == "Journals of OR/MS" %}
+                                <li class="mb-10" style="list-style-type: square;"><a style="color: black;list-style-type: square;" href="{{thing.url}}" target="_blank">
+                                {{thing.title}}</a></li>{% endif %}{% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="news-are mrg-xs">
+                        <div class="news-img">
+                            <img src="{% static 'images/POM.png' %}" height="180" alt="" >
+                            <div class="news-date navy-bg" style="left:0px;width: 100%;">
+                                <div class="blog-meta-2">
+                                    <span class="published3">
+                                        <i class="icofont icofont-certificate-alt-2"></i>
+                                        {% trans 'Useful Links' %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="img-text gray-bg" style="min-height: 530px;"><h3 class="text-center mb-20">{% trans 'Production and Operations Management' %}</h3>
+                            <ul>{% for thing in content_category %}{% if thing.sub_sub_category == "Journals of POM" %}
+                                <li class="mb-10" style="list-style-type: square;"><a style="color: black;list-style-type: square;" href="{{thing.url}}" target="_blank">
+                                {{thing.title}}</a></li>{% endif %}{% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+{% if current_page.title_en == "Courses" %}
+<section class="courses-details pt-60 pb-80">
+    <div class="container">
+        {% for thing in content_category %}
+        <div class="row" style="background: #f2f2f2;padding:20px;">     
+            <div class="col-md-6 col-sm-12">
+                <div class="courses-information gray-bg">
+                    <h3 class="sidebar-title text-center" {% if thing.level|slice:":1" == "U" %}style="background: #2d3e50;"{% endif %}>{{thing.title}} </h3>
+                    <ul class="sidebar-menu" style="padding-top: 10px;">
+                        <li>{% trans 'Educational Level' %} :<span>{% if LANGUAGE_CODE == "el" and thing.level|slice:":1" == "U" %}Προπτυχιακό {% elif LANGUAGE_CODE == "el" and thing.level == "Graduate" %}Μεταπτυχιακό {% else %}{{thing.level}}{% endif %}</span></li>
+                        <li><i class="fa fa-link" aria-hidden="true"></i> :<span>{% if thing.url %}{{thing.url}}{% endif %}</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="about-lectures">
+                    <p>{{thing.description|safe}}</p>
+                </div>
+            </div>
+        </div><hr style="margin-top: 20px;margin-bottom: 20px;">
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+{% if current_page.title_en == "Research Search" %}
+<section class="courses-details pb-30">
+    <div class="container">
+        <div class="row">
+        <div class="col-xs-12">
+        <style type="text/css">table {border-collapse: collapse;width: 100%;}
+                                   td, th {border: 1px solid #dddddd;text-align: center;padding: 8px;}
+                                   tr:nth-child(even) {background-color: #dddddd;}</style>
+            <div class="courses-information gray-bg">
+                <h3 class="sidebar-title text-center">{% trans 'Research Results' %} </h3>
+                <table id="myTable" class="display" cellspacing="0" width="100%" style="padding-bottom: 40px;">
+                    <thead>
+                        <tr>
+                            <th>{% trans 'Category' %}</th>
+                            <th>{% trans 'Title' %}</th>
+                            <th>{% trans 'Subject' %}</th>
+                            <th>{% trans 'Author' %}</th>
+                            <th>{% trans 'Year' %}</th>
+                            <th>{% trans 'Journal' %}</th>
+                            <th>{% trans 'Volume' %}</th>
+                            <th>{% trans 'Number' %}</th>
+                            <th>{% trans 'Conference' %}</th>
+                            <th>{% trans 'Publisher' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for thing in content %}
+                        <tr>
+                            <td>{{thing.sub_category}}</td>
+                            <td class="linking"><a href="{% for page in pages %}{% if page.title_en == thing.sub_category %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl thing.id %}{% endif %}{% endfor %}" >{{thing.title}}</a></td>
+                            <td>{{thing.sub_sub_category}}</td>
+                            <td>{{thing.author}}</td>
+                            <td>{{thing.year}}</td>
+                            {% if thing.sub_category == "Journal Papers" %}
+                                <td>{{thing.journal}}</td>
+                                <td>{{thing.volume}}</td>
+                                <td>{{thing.number}}</td>
+                            {% else %}
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            {% endif %}
+                            {% if thing.sub_category == "Conference Papers" %}
+                                <td>{{thing.conference}}</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                            {% if thing.sub_category == "Books" %}
+                                <td>{{thing.publisher}}</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% if content_category.0.sub_category == "Projects" %}
+<section class="pagination_custom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center dn-mrg">
+                <div class="pages2">
+                    {% if content_category_paginated.has_other_pages %}
+                          <ul class="pagination">
+                            <li style="border-bottom: none;"><a style="border:none;" href="?page={{1}}">&Lt;</a></li>
+                            {% if content_category_paginated.has_previous %}
+                              <li style="border-bottom: none;"><a style="border:none;" href="?page={{content_category_paginated.previous_page_number }}">&lt</a></li>
+                            {% else %}   
+                              <li style="border-bottom: none;"><a style="border:none;" href="?page={{1}}">&lt</a></li>
+                            {% endif %}
+                             <li style="position: absolute;border-bottom: none;"><form><input style="text-align:center;height: 36px;border-radius: 15px;" type="number" class="form-control" name="page" id="pagination_input" placeholder="{{content_category_paginated.number}}" min="1" max="{{content_category_paginated.paginator.num_pages}}"></form></li>
+                            {% if content_category_paginated.has_next %}
+                              <li style="margin-left: 80px;border-bottom: none;"><a style="border:none;" href="?page={{ content_category_paginated.next_page_number }}">&gt</a></li>
+                            {% else %}
+                              <li style="margin-left: 80px;border-bottom: none;"><a style="border:none;" href="?page={{ content_category_paginated.paginator.num_pages }}">&gt</a></li>
+                            {% endif %}
+                              <li style="border-bottom: none;"><a style="border:none;" href="?page={{content_category_paginated.paginator.num_pages}}">&Gt;</a></li>
+                          </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_js %}
+{% if current_page.title_en == "Contact" %}
+{% compress js/css %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDamGh65H64vODnu05dY-uLLqHq1nGB5vE"></script>
+<script>
+    var myCenter=new google.maps.LatLng(37.99600909999999, 23.739878699999963);
+    function initialize()
+    {
+        var mapProp = {
+          center:myCenter,
+          scrollwheel: false,
+          zoom:15,
+          mapTypeId:google.maps.MapTypeId.TERRAIN
+          };
+        var map=new google.maps.Map(document.getElementById("hastech2"),mapProp);
+        var marker=new google.maps.Marker({
+          position:myCenter,
+          icon:"{% static 'images/map_marker.png' %}",
+            map: map,
+          });
+        var styles = [
+          {
+            stylers: [
+              { hue: "#c5c5c5" },
+              { saturation: -100 }
+            ]
+          },
+        ];
+        map.setOptions({styles: styles});
+        marker.setMap(map);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+{% endcompress %}
+{% endif %}
+
+{% compress js/css %}
+<script type="text/javascript">
+$("#research-form").submit(function( event ) {
+    if ($("#research-date-from").val() > $("#research-date-to").val()){
+        event.preventDefault();
+        $("#mymessage").show();
+        $("#mymessage").css("visibility","visible");
+    }
+})
+</script>
+<script type="text/javascript">
+    $("#mymessage").hide();
+</script>
+<!-- <script type="text/javascript">$('#research-category').prop('disabled', true);</script> -->
+<script type="text/javascript">
+    var update_research_search = function() {
+        var selected = $('#research-type').find(":selected").text()
+        if(selected == "Publications" || selected == "Δημοσιεύσεις"){
+            $('#research-category').prop('disabled', false);
+            $('#research-category').addClass( "orderby" );
+            $('#default-cat').text('All');
+            if ("{{LANGUAGE_CODE}}" == "el"){
+                $('#default-cat').text('Όλα');
+            }
+        }
+
+        if(selected == "Projects" || selected == "Πρότζεκτς"){
+            $('#default-cat').text('-');
+            $('#research-category').val('default');
+            $('#research-category').prop('disabled', 'disabled');
+        }
+
+        if(selected == "All" || selected == "Όλα"){
+            $('#default-cat').text('-');
+            $('#research-category').val('default');
+            $('#research-category').prop('disabled', 'disabled');
+        }
+    };
+
+    $(update_research_search);
+
+    $("#research-type").change(update_research_search);                          
+</script>
+<script>
+  $(function(){
+    $("#myTable").dataTable();
+    // $("#myTable_paginate").hide();
+    // $("#myTable_info").hide();
+    $("#myTable_length").hide();
+    $("#myTable_info").css("margin-top", "10px");
+    $("#myTable_filter").css("text-align", "center");
+    $("#myTable_filter").css("float", "none");
+    $("#myTable_filter").css("margin-top", "10px");
+    $("#myTable_paginate").css("margin-top", "10px");
+    if ('{{LANGUAGE_CODE}}' == "en"){
+        $("#myTable_previous").text('Previous');
+    }else{
+        $("#myTable_previous").text('Προηγούμενη');
+    }
+    if ('{{LANGUAGE_CODE}}' == "en"){
+        $("#myTable_next").text('Next');
+    }else{
+        $("#myTable_next").text('Επόμενη');
+    }
+    $("#myTable_filter input").css("width", "60%");
+    $("#myTable_filter label").css("float", "right");
+  })
+</script>
+{% endcompress %}
+{% endblock %}
+

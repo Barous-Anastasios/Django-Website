@@ -1,0 +1,16 @@
+django
+django-mptt
+Pillow
+django-ckeditor
+django-crispy-forms
+simplejson
+httplib2
+mysqlclient
+django-cleanup
+django-modeltranslation
+whitenoise
+python-decouple
+dj-database-url
+Gunicorn
+psycopg2
+django_compressor

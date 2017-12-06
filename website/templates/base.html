@@ -1,0 +1,25 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load compress %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% include 'head.html' %}
+{% include 'header.html' %}
+
+{% block content %}
+{% endblock %}
+
+{% include 'footer.html' %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% if message %}
+{% compress js/css %}
+<script type="text/javascript">
+	var message = "{{message}}";
+	alert(message);
+</script>
+{% endcompress %}
+{% endif %}

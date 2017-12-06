@@ -1,0 +1,309 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load compress %}
+
+{% block content %}
+<!-- Start of slider area -->
+<div class="slider-area">
+    <div class="slider-active">
+        <div class="slider-all">
+            <img src="{% static 'images/slider/1.jpg' %}" alt="">
+            <div class="slider-text-wrapper">
+                <div class="table">
+                    <div class="table-cell">
+                        <div class="slider-text animated">
+                            <h1>{% trans 'Transportation Systems and Logistics Center' %}</h1>
+                            <p></p>
+                            <a class="button extra-small mb-20" href="{% for page in pages %}{% if page.title_en == "About" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">
+                                <span>{% trans 'Learn More' %}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-all">
+            <img src="{% static 'images/slider/2.jpg' %}" alt="">
+            <div class="slider-text-wrapper">
+                <div class="table">
+                    <div class="table-cell">
+                        <div class="slider-text animated">
+                            <h1>{% trans 'Research Projects' %}</h1>
+                            <p></p>
+                            <a class="button extra-small mb-20" href="{% for page in pages %}{% if page.title_en == "Projects" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">
+                                <span>{% trans 'Learn More' %}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-all">
+            <img src="{% static 'images/slider/3.jpg' %}" alt="">
+            <div class="slider-text-wrapper">
+                <div class="table">
+                    <div class="table-cell">
+                        <div class="slider-text animated">
+                            <h1>{% trans 'Athens University of Economics and Business' %}</h1>
+                            <p></p>
+                            <a class="button extra-small mb-20" href="https://www.aueb.gr/{{LANGUAGE_CODE}}" target="_blank">
+                                <span>{% trans 'Visit Site' %}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-all">
+            <img src="{% static 'images/slider/4.jpg' %}" alt="">
+            <div class="slider-text-wrapper">
+                <div class="table">
+                    <div class="table-cell">
+                        <div class="slider-text animated">
+                            <h1>{% trans 'Management Science Laboratory - MSL' %}</h1>
+                            <p></p>
+                            <a class="button extra-small mb-20" href="http://www.msl.aueb.gr/" target="_blank">
+                                <span>{% trans 'Visit Site' %}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-all">
+            <img src="{% static 'images/slider/5.jpg' %}" alt="">
+            <div class="slider-text-wrapper">
+                <div class="table">
+                    <div class="table-cell">
+                        <div class="slider-text animated">
+                            <h1>{% trans 'Publications' %}</h1>
+                            <p></p>
+                            <a class="button extra-small mb-20" href="{% for page in pages %}{% if page.title_en == "Publications" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">
+                                <span>{% trans 'Learn More' %}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of slider area --> 
+
+<!-- Start page content -->
+<section class="service-area ptb-50">
+	<div class="container">
+		<div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center mb-30">
+                    <h1 class="uppercase">{% trans 'Research' %}</h1>
+                    <div class="separator my mt-15"></div>
+                </div>
+            </div>
+        </div>
+		<div class="row">
+			<div class="col-md-4 col-sm-6">
+				<div class="news-are mrg-xs">
+                    <div class="news-img">
+                        <img src="{% static 'images/projects-image.png' %}" alt="" >
+                        <div class="news-date navy-bg">
+                            <div class="blog-meta-2" style="padding: 3px;">
+                                <span class="published3">
+                                    <a href="{% for page in pages %}{% if page.title == 'Projects' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}" style="color:white;">{% trans 'Recent Projects' %}</a>
+                                </span>
+                            </div>
+                        <!--     <div class="blog-meta for-news">
+                                <span class="published3">
+                                    <a>
+                                        <i class="icofont icofont-eye"></i> {% for page in pages %}{% if page.title_en == 'Projects' %}{{page.views}}{% endif %}{% endfor %}
+                                    </a>
+                                </span>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="img-text gray-bg" style="min-height: 353px;">
+                        <p style="margin-top: 5%;">{{awards.0.description|slice:":350"}}</p>
+                        <a class="button extra-small" href="{% for page in pages %}{% if page.title == 'Projects' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">
+                            <span>{% trans 'More' %}</span>
+                        </a>
+                    </div>
+                </div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="news-are mrg-xs" style="margin-bottom: 30px;">
+                    <div class="news-img">
+                        <img src="{% static 'images/publications-image.png' %}" alt="" >
+                        <div class="news-date navy-bg">
+                            <div class="blog-meta-2" style="padding: 3px;">
+                                <span class="published3">
+                                    <a href="{% for page in pages %}{% if page.title == 'Publications' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}" style="color: white;">{% trans 'Recent Publications' %}</a>
+                                </span>
+                            </div>
+                            <!-- <div class="blog-meta for-news">
+                                <span class="published3">
+                                    <a>
+                                        <i class="icofont icofont-eye"></i> {% for page in pages %}{% if page.title_en == 'Publications' %}{{page.views}}{% endif %}{% endfor %}
+                                    </a>
+                                </span>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="img-text gray-bg" style="min-height: 353px;">
+                        <p style="margin-top: 5%;">{{awards.1.description|slice:":350"}}</p>
+                        <a class="button extra-small" href="{% for page in pages %}{% if page.title == 'Publications' %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">
+                            <span>{% trans 'More' %}</span>
+                        </a>
+                    </div>
+                </div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="service-from navy-bg">
+                    <h3>{% trans 'Research Search' %}</h3>
+                    <form id="research-form" class="ordering" method="POST" action="{% for page in pages %}{% if page.title_en == "Research Search" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% csrf_token %}
+                        <div class="orderby-wrapper">
+                            <label>{% trans 'Research Type' %}</label>
+                            <select name="research-type" id="research-type" style="color:white;height: 30px;background: inherit;border: 0.5px solid white;">
+                                <option style="color:black;" id="Publications-search" value="Publications">{% trans 'Publications' %}</option>
+                                <option style="color:black;" id="Projects-search" value="Projects">{% trans 'Projects' %}</option>
+                                <option style="color:black;" id="default-search" value="default" selected="selected">{% trans 'All' %}</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="orderby-wrapper">
+                            <label>{% trans 'Category (Only for Publications)' %}</label>
+                            <select name="research-category" id="research-category" disabled="disabled" style="color:white;height: 30px;background: inherit;border: 0.5px solid white;">
+                                <option style="color:black;text-align: center;" id="default-cat" value="default">-</option>
+                                <option style="color:black;" id="Working-Papers" value="Working Papers">{% trans 'Working Papers' %}</option>
+                                <option style="color:black;" id="Journal Papers" value="Journal Papers">{% trans 'Journal Papers' %}</option>
+                                <option style="color:black;" id="Conference Papers" value="Conference Papers">{% trans 'Conference Papers' %}</option>
+                                <option style="color:black;" id="default-search" value="Books">{% trans 'Books' %}</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="orderby-wrapper">
+                            <label>{% trans 'From Year' %}</label>
+                            <select name="date_from" id="research-date-from" style="color:white;height: 30px;background: inherit;border: 0.5px solid white;">
+                            <option style="color:black;" id="default-search" value="0" selected="selected">{% trans 'All' %}</option>
+                            {% for item in calendar %}
+                                <option style="color:black;" id="default-search" value="{{item}}">{{item}}</option>
+                            {% endfor %}
+                            </select>
+                        </div>
+                        <br>
+                        <div class="orderby-wrapper">
+                            <label>{% trans 'To Year' %}</label>
+                            <select name="date_to" id="research-date-to" style="color:white;height: 30px;background: inherit;border: 0.5px solid white;">
+                            <option id="default-search" value="3000" selected="selected">{% trans 'All' %}</option>
+                            {% for item in calendar %}
+                                <option style="color:black;" id="default-search" value="{{item}}">{{item}}</option>
+                            {% endfor %}
+                            </select>
+                       	</div>
+                       	<br>
+                        <div class="orderby-wrapper">
+                            <label>{% trans 'Subject' %}</label>
+                            <select name="subject" style="color:white;height: 30px;background: inherit;border: 0.5px solid white;">
+                                <option style="color:black;" value="default" selected='selected'>{% trans 'All' %}</option>
+                                <option style="color:black;" value="Vehicle Routing Problems">{% trans 'Vehicle Routing Problems' %}</option>
+                                <option style="color:black;" value="Scheduling Problems">{% trans 'Scheduling Problems' %}</option>
+                                <option style="color:black;" value="Hazardous Materials Logistical Problems">{% trans 'Hazardous Materials Logistical Problems' %}</option>
+                                <option style="color:black;" value="Green Vehicle Routing Problem">{% trans 'Green Vehicle Routing Problem' %}</option>
+                                <option style="color:black;" value="Inventory Routing Problem">{% trans 'Inventory Routing Problem' %}</option>
+                                <option style="color:black;" value="Green Inventory Routing Problem">{% trans 'Green Inventory Routing Problem' %}</option>
+                            </select>
+                        </div>
+                        <div class="chosen-submit text-center">
+                            <!-- <a class="button extra-small" type="submit"> -->
+                                <button class="submit" type="submit">{% trans 'Search' %}</button>
+                            <!-- </a> -->
+                        </div><br>
+                        <span class='popup' id='mymessage' style='color:white;position: absolute;'>Wrong Dates inserted!Try again</span>
+                    </form>
+                </div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="service-area pb-50">
+	<div class="container">
+		<div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center mb-30">
+                    <h1 class="uppercase">{% trans 'News & Events' %}</h1>
+                    <div class="separator my mt-15"></div>
+                </div>
+            </div>
+        </div>
+		<div class="row">
+			{% for new in content_news|slice:"3" %}
+			<div class="col-md-4 col-sm-6">
+				<div class="news-are mrg-xs">
+                    <div class="news-img">
+                        {% if new.image %}<img src="{{new.image.url}}" width="270" height="204" alt="" >{% else %}<img src="{% static 'images/no-image2.png' %}" style="height: 150px;border:1px solid black;">{% endif %}
+                        <div class="news-date navy-bg" style="padding: 5px;text-align: center;">
+                            <div class="blog-meta-2" style="float:none;text-align: center;">
+                                <span class="published3">
+                                    <i class="icofont icofont-ui-calendar"></i>
+                                    {{new.created_at|date:'d/m/Y' }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="img-text gray-bg" style="min-height: 320px;">
+                        <h3><a href="{% for page in pages %}{% if page.title_en == 'News' %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl new.id %}{% endif %}{% endfor %}">{{new.title}}</a></h3>
+                        <p style="padding: 3px;">{{new.description|safe|truncatewords:"30"}} </p>
+                        <a class="button extra-small" href="{% for page in pages %}{% if page.title == 'News' %}{% url 'regular_sub_page' LANGUAGE_CODE page.friendlyurl new.id %}{% endif %}{% endfor %}">
+                            <span>{% trans 'Read More' %}</span>
+                        </a>
+                    </div>
+                </div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+{% compress js/css %}
+<script type="text/javascript">
+$( "#research-form" ).submit(function( event ) {
+    if ($("#research-date-from").val() > $("#research-date-to").val()){
+        event.preventDefault();
+        $("#mymessage").show();
+    }
+})
+</script>
+<script type="text/javascript">
+    $("#mymessage").hide();
+</script>
+<script type="text/javascript">
+    var update_research_search = function() {
+        var selected = $('#research-type').find(":selected").text()
+        if(selected == "Publications" || selected == "Δημοσιεύσεις"){
+            $('#research-category').prop('disabled', false);
+            $('#default-cat').text('All');
+            if ("{{LANGUAGE_CODE}}" == "el"){
+                $('#default-cat').text('Όλα');
+            }
+        }
+
+        if(selected == "Projects" || selected == "Πρότζεκτς"){
+            $('#research-category').prop('disabled', 'disabled');
+            $('#default-cat').text('-');
+        }
+        if(selected == "All" || selected == "Όλα"){
+            $('#default-cat').text('-');
+            $('#research-category').prop('disabled', 'disabled');
+        }
+    };
+
+    $(update_research_search);
+
+    $("#research-type").change(update_research_search);                           
+</script>
+{% endcompress %}
+
+{% endblock %}

@@ -1,0 +1,178 @@
+{% load i18n %}
+{% load compress %}
+<body>
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->  
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+    <!-- Start of header area -->
+    <header class="header-area">
+        <div class="header-top navy-bg ptb-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="header-top-info">
+                            <ul>
+                                <li>
+                                    <a>
+                                        <i class="icofont icofont-ui-call"></i>
+                                        {{lab_details.phone}}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:{{lab_details.email}}">
+                                        <i class="icofont icofont-envelope"></i>
+                                        translog
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 hidden-xs">
+                        <div class="header-top-right f-right" >
+                            <div class="header-top-social f-right">
+                                <form action="/{{LANGUAGE_CODE}}/search/" class="search-form" method="POST">{% csrf_token %}
+                                    <div class="has-feedback">
+                                        <label for="search" class="sr-only">{% trans 'Search' %}</label>
+                                        <input type="text" class="form-control" name="search_text" id="search" placeholder="{% trans 'Search' %}">
+                                        <!-- <span class="glyphicon glyphicon-search form-control-feedback"></span> -->
+                                        <i class="fa fa-lg fa-search form-control-feedback" style="top:10px;color: #2d3e50;"></i>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="header-top-language f-left">
+                                <ul>
+                                    <li><a href="" data-toggle="dropdown">{% for lang in languages %}
+                                                {% if lang.lang_code == LANGUAGE_CODE %}{{lang.name}}<i class="icofont icofont-simple-down"></i></a>
+                                        <ul class="dropdown-menu">{% endif %}{% endfor %}
+                                            {% for lang in languages %}
+                                                {% if lang.lang_code != LANGUAGE_CODE %}
+                                                    <li><a href="{% if lang.lang_code != LANGUAGE_CODE %}
+                                                                    {% if not friendlyurl %}
+                                                                        {% url 'index' lang.lang_code %}
+                                                                    {% else %}
+                                                                        {% for langs, friendlyurls in zipped_langs_friendlyurls %}
+                                                                            {% if langs == lang.lang_code %}
+                                                                                {% url 'regular_page' langs friendlyurls %}
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                    {% endif %}
+                                                                {% endif %}"
+                                                    >{{lang.name}}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>       
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom stick-h2">
+            <div class="container">
+                <div class="row">
+                    <div class={% if LANGUAGE_CODE == "el" %}"col-md-2{% else %}"col-md-4{% endif %} col-sm-12 col-xs-12">
+                        <div class="logo">
+                            <a href="/{{LANGUAGE_CODE}}/"><img src="{{lab_details.logo.url}}" width="220" height="65" alt=""> </a>
+                        </div>
+                    </div>
+                    <div {% if LANGUAGE_CODE == "el" %}class="col-md-10{% else %}class="col-md-8"{% endif %} hidden-sm hidden-xs">
+                        <div class="menu-area f-right">
+                            <nav>
+                                <ul>
+                                    <li><a href="{% url 'index' LANGUAGE_CODE %}">{% trans 'HOME' %}</a></li>
+                                    <li><a href="{% for page in pages %}{% if page.title_en == "About" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'ABOUT' %}  </a></li>
+                                    <li class="coloumn-one"><a>{% trans 'PEOPLE' %}  <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                        <ul>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Head of Translog" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Head Of Translog' %}</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Senior Research Fellows" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Senior Research Fellows' %}</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Research Fellows" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Research Fellows' %}</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Visiting Research Fellows" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Visiting Research Fellows' %}</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "PhD Students" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Phd Students' %}</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="coloumn-one"><a>{% trans 'RESEARCH' %}  <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                        <ul>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Areas" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Areas' %}</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Projects" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Projects' %}</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="coloumn-one"><a href="{% for page in pages %}{% if page.title_en == "Publications" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'PUBLICATIONS' %}  <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                        <ul>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Working Papers" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Working Papers' %}</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Journal Papers" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Journal Papers' %}</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Conference Papers" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Conference Papers' %}</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Books" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Books' %}</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="coloumn-one"><a>{% trans 'ACADEMICS' %}  <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                        <ul>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Courses" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Courses' %}</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Software" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Software' %}</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Useful Links" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Useful Links' %}</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{% for page in pages %}{% if page.title_en == "News" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'NEWS' %}  </a></li>
+                                    <li><a href="{% for page in pages %}{% if page.title_en == "Contact" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'CONTACT' %} </a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- mobile-menu-area start -->
+    <div class="mobile-menu-area">
+        <div class="container">
+            <div class="row">
+                <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
+                    <div class="mobile-menu">
+                        <nav id="dropdown">
+                            <ul>
+                                <li><a href="{% url 'index' LANGUAGE_CODE %}">HOME</a></li>
+                                    <li><a href="{% for page in pages %}{% if page.title_en == "About" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">ABOUT  </a></li>
+                                    <li class="coloumn-one"><a>PEOPLE  <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                        <ul>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Head of Translog" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">Head Of Translog</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Senior Research Fellows" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">Senior Research Fellows</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Research Fellows" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">Research Fellows</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Visiting Research Fellows" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">Visiting Research Fellows</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "PhD Students" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">Phd Students</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="coloumn-one"><a href="{% for page in pages %}{% if page.title_en == "Research" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">RESEARCH  <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                        <ul>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Areas" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">Areas</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Projects" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">Projects</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="coloumn-one"><a href="{% for page in pages %}{% if page.title_en == "Publications" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">PUBLICATIONS  <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                        <ul>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Working Papers" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">Working Papers</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Journal Papers" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">Journal Papers</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Conference Papers" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">Conference Papers</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Books" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">Books</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="coloumn-one"><a>{% trans 'ACADEMICS' %}  <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                        <ul>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Courses" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Courses' %}</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Software" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Software' %}</a></li>
+                                            <li><a href="{% for page in pages %}{% if page.title_en == "Useful Links" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">{% trans 'Useful Links' %}</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{% for page in pages %}{% if page.title_en == "News" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">NEWS  </a></li>
+                                    <li><a href="{% for page in pages %}{% if page.title_en == "Contact" %}{% url 'regular_page' LANGUAGE_CODE page.friendlyurl %}{% endif %}{% endfor %}">CONTACT </a></li>
+                            </ul>
+                        </nav>
+                    </div>					
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobile-menu-area end -->
+    <!-- End of header area -->
